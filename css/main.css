@@ -1,0 +1,113 @@
+* {
+  /* height & width now includes border & padding */
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns:  10px 1fr 10px;
+  grid-template-rows: 10px 1fr 10px;
+  margin: 0;
+  height: 100vh;
+  font-family: 'IM Fell English SC', serif;
+}
+
+h1 {
+  font-size: 36pt;
+}
+
+p {
+  font-size: 16pt;
+}
+
+
+main {
+  display: grid;  
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  background-color: white;
+}
+
+#IF {
+  display: grid;
+  grid-template-rows: 2fr 3fr 1fr;
+}
+
+#mainMap{
+  display: grid;
+  grid-template-columns: 10% fit-content(20%) fit-content(20%) 1fr;
+  grid-template-rows: 1fr;
+
+  background-image:url('https://www.nationsonline.org/maps/USA/Oregon_map.jpg');
+  background-repeat:no-repeat;
+  background-size:cover;
+  /* contain */
+}
+
+
+
+nav, footer {
+  grid-column: 1 / 5;
+  background-color: teal;
+}
+
+nav,aside,footer {
+  background-color: teal;
+}
+
+div {
+  border: 2px solid black;
+}
+
+.area:hover {
+  border:2px solid red;
+            
+  }
+
+#infoside {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  
+}
+
+
+#tinyInfo {
+  /* placeholder info */
+  font-size: 12pt;
+  
+}
+
+#headText {
+  text-align: center;
+  padding: 2px;
+  
+  background-image:url('https://wallup.net/wp-content/uploads/2017/11/10/70037-war-World_War_II.jpg');
+  background-repeat:no-repeat;
+  background-size:cover;
+
+
+}
+
+#mainText {
+  text-align: left;
+  padding: 10px;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+
+/*
+#widgets {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+  background-color: lightgreen;
+  font-weight: bold;
+}
+*/
+
