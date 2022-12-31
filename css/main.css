@@ -30,14 +30,18 @@ main {
 
 #IF {
   display: grid;
-  grid-template-rows: 2fr 3fr 1fr;
+  grid-template-rows: 2fr 3fr 10%;
+}
+
+.cardResultArea {
+  text-align: center;
 }
 
 #mainMap{
   display: grid;
   grid-template-columns: 10% fit-content(20%) fit-content(20%) 1fr;
   grid-template-rows: 1fr;
-
+  /* background-image:url('https://github.com/D-Sen/proj1-woc/blob/main/images/oregontes.png'); */
   background-image:url('https://www.nationsonline.org/maps/USA/Oregon_map.jpg');
   background-repeat:no-repeat;
   background-size:cover;
@@ -91,7 +95,7 @@ div {
 
 #mainText {
   text-align: left;
-  padding: 10px;
+  padding: 0px 5px 0px 10px;
 }
 
 #buttons {
@@ -110,4 +114,3 @@ div {
   font-weight: bold;
 }
 */
-
