@@ -9,6 +9,9 @@ const textStrings = [
   "We failed on this day but we will not fail again. Though this battle is lost, we must continue to fight."  
   ];
 
+cardFaces = [null,null,"2_of_","3_of_","4_of_","5_of_","6_of_",
+                  "7_of_","8_of_","9_of_","10_of_",
+                  "jack_of_","queen_of_","king_of_","ace_of_"];
 
 /*----- app's state (variables) -----*/
   let winner = null; // 1 - player, 2 - cpu
@@ -27,6 +30,10 @@ const textStrings = [
     
   let card1 = null;
   let card2 = null;
+
+  let player1CardFace = "spades";
+  let player2CardFace = "hearts";
+  
 
 
 // 0 - not fought(default), 1 - won, 2 - lost
@@ -64,28 +71,24 @@ document.getElementById('reset').addEventListener('click', (evt) => {
 
 document.getElementById('Portland').addEventListener('click', (evt) => {
   currentArea = "Portland";
-  //handleClickArea(evt);
   render(1,evt,1);
   render(5,evt,1);
 });
 
 document.getElementById('Eugene').addEventListener('click', (evt) => {
   currentArea = "Eugene";
-  //handleClickArea(evt);
   render(1,evt,2);
   render(5,evt,1);
 });
 
 document.getElementById('Medford').addEventListener('click', (evt) => {
   currentArea = "Medford";
-  //handleClickArea(evt);
   render(1,evt,3);
   render(5,evt,1);
 });
 
 document.getElementById('Bend').addEventListener('click', (evt) => {
   currentArea = "Bend";
-  //handleClickArea(evt);
   render(1,evt,4);
   render(5,evt,1);
 });
@@ -94,7 +97,6 @@ document.getElementById('Bend').addEventListener('click', (evt) => {
 /*----- functions -----*/
 init();
 
-//FIX SO NOT PLAGUEEEEE
 function getRandInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -104,7 +106,7 @@ function getRandInt(min, max) {
 function getCard(Player){
   let chosenCard = null;
   do {
-    chosenCard = Math.floor(getRandInt(2,16));
+    chosenCard = Math.floor(getRandInt(2,15));
   } while (Player.cardStock[chosenCard] === 0);
   return chosenCard;
 };
@@ -118,11 +120,25 @@ function mainGameLogic() {
   p2wd = null;
   p1realValue = null;
   p2realValue = null;
-    
+
+  let tempCardFace = null;
+
+
+  tempCardFace = getRandInt(0,4);
+  if (tempCardFace === 0) { player1CardFace = "spades";
+  } else if (tempCardFace === 0) { player1CardFace = "hearts";
+  } else if (tempCardFace === 0) { player1CardFace = "diamonds";
+  } else { player1CardFace = "clubs";
+  }
+  tempCardFace = getRandInt(0,4);
+  if (tempCardFace === 0) { player2CardFace = "spades";
+  } else if (tempCardFace === 0) { player2CardFace = "hearts";
+  } else if (tempCardFace === 0) { player2CardFace = "diamonds";
+  } else { player2CardFace = "clubs";
+  }
+
   card1 = getCard(you);
-  card2 = getCard(cpu);
-  console.log(`${card1} is the player`)
-  console.log(`${card2} is the cpu`)
+  card2 = getCard(cpu);  
  
   if (card1 > 9 && card1 < 16) {
     p1realValue = 10;
@@ -134,16 +150,14 @@ function mainGameLogic() {
   } else {
     p2realValue = card2;
   }
-  
-  console.log(`${p1realValue} RV player`)
-  console.log(`${p2realValue} RVcpu`)
-    
+      
   if (p1realValue === p2realValue) {
     //WAR
     for(i = 0; i < 3; i++){
       player1war.push(getCard(you));
       player2war.push(getCard(cpu));
     } 
+
     console.log(`${player1war} player 1 war`)
     //war can only happen once, so check then redraw card if values match (until they dont)
     do {
@@ -162,11 +176,6 @@ function mainGameLogic() {
       }
     } while (p1realValue === p2realValue);
       //you win
-      console.log(`${you.cardStock[player2war[0]]} <- number`);
-      console.log(player2war);
-      //console.log(you.cardStock[player2war[2]]);
-      //console.log(player2war.length);
-    
 
       if (p1realValue > p2realValue) {
         winner = 1; 
@@ -210,7 +219,7 @@ function render(type,evt,areaNumber) {
 
   if (type === 1) {
     //mouse selection text
-    document.getElementById('cardArea').innerText = "";
+	document.getElementById('cardArea').innerText = "";
     document.getElementById('resultArea').innerText = "";
     if (areas[evt.target.id] === 0) {
       document.getElementById('mainText').innerText = textStrings[areaNumber];  
@@ -221,28 +230,30 @@ function render(type,evt,areaNumber) {
     }
     
   } else if (type === 2) {
-    //part 1 of battle (use with type 4)
-    document.getElementById('cardArea').innerHTML = `${faceCardReplace(card1)} &nbsp;&nbsp;&nbsp;&nbsp; ${faceCardReplace(card2)} <br>`;
-document.getElementById('battle').disabled = true;
+    //part 1 of battle
+
+	document.getElementById('cardArea').innerHTML = `<img src="./images/PNG-cards-1.3/${cardFaces[card1] + player1CardFace + ".png"}" width="100px" height="100px"> &nbsp;&nbsp;&nbsp;&nbsp; <img src="./images/PNG-cards-1.3/${cardFaces[card2] + player2CardFace + ".png"}" width="100px" height="100px">`;
+	document.getElementById('battle').disabled = true;
+	
   } else if (type === 3) {
-    //war cards & win
-    //when using this, skip using type 4, redundant code due to complexity of faceCardReplace usage in playerXwar array
+    //part 1 of battle when "war" occurs
     for(i = 0; i < 3; i++){
     	player1war[i] = faceCardReplace(player1war[i]);
       player2war[i] = faceCardReplace(player2war[i]);
     }
+    document.getElementById('cardAreaWar').innerHTML = `<img src="./images/PNG-cards-1.3/${cardFaces[p1wd] + player1CardFace + ".png"}" width="100px" height="100px"> &nbsp;&nbsp;&nbsp;&nbsp; <img src="./images/PNG-cards-1.3/${cardFaces[p2wd] + player2CardFace + ".png"}" width="100px" height="100px"><br>`;
+    document.getElementById('cardArea').innerHTML = `War!<br>${player1war} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;${player2war}<br>`;
 
-    document.getElementById('cardArea').innerHTML = `${player1war} &nbsp;&nbsp;&nbsp;&nbsp; ${player2war} <br> ${faceCardReplace(p1wd)} &nbsp;&nbsp;&nbsp;&nbsp; ${faceCardReplace(p2wd)} <br>`;
-      
   
   } else if (type === 4) {
-    //win ONLY (combine with type 2)
+    //part 2 of battle
     if (winner === 1) {
-      document.getElementById('resultArea').innerHTML = `<br>VICTORY!`;  
+      document.getElementById('resultArea').innerHTML = `VICTORY!`;  
 
     } else if (winner === 2) {  
-      document.getElementById('resultArea').innerHTML = `<br>DEFEAT!`;    
+      document.getElementById('resultArea').innerHTML = `DEFEAT!`;    
     }
+    
   } else if (type === 5) {
     //handle clicking on area
     let allAreas = document.getElementsByClassName("area");
@@ -293,31 +304,7 @@ function resetGame(){
   render(6,null,null);
   init();
 };
-/*
-function handleClickArea(evt) {
-  let currentArea = evt.target.id; 
-  let allAreas = document.getElementsByClassName("area");
 
-  //render(5,currentArea,null)
-  for(i = 0; i < allAreas.length; i++){
-  	allAreas[i].style.border = "none"
-  }
-  
-  console.log(evt.target);
-  //console.log(evt.target.id);
-  evt.target.style.border="2px solid red";
-  evt.target.style.borderRadius="50%";
-  //evt.target.id
-  if (areas[evt.target.id] == 0) {
-    document.getElementById('battle').disabled = false;
-  } else if (areas[evt.target.id] == 1){
-    document.getElementById('battle').disabled = true;
-  } else if (areas[evt.target.id] == 2){
-    document.getElementById('battle').disabled = true;
-  }
-  
-}
-*/
 function init(){
   you = new Player("person");
   cpu = new Player("cpu");

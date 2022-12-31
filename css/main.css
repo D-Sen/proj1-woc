@@ -18,6 +18,7 @@ h1 {
 
 p {
   font-size: 16pt;
+  margin:5px;
 }
 
 
@@ -31,21 +32,24 @@ main {
 #IF {
   display: grid;
   grid-template-rows: 2fr 3fr 10%;
+  border: 2px solid black;
 }
 
 .cardResultArea {
   text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  
 }
 
 #mainMap{
   display: grid;
-  grid-template-columns: 10% fit-content(20%) fit-content(20%) 1fr;
+  grid-template-columns: 25% 15% 12% 1fr;
   grid-template-rows: 1fr;
-  /* background-image:url('https://github.com/D-Sen/proj1-woc/blob/main/images/oregontes.png'); */
-  background-image:url('https://www.nationsonline.org/maps/USA/Oregon_map.jpg');
+  background-image:url("../images/oregontes.png");
   background-repeat:no-repeat;
   background-size:cover;
-  /* contain */
+  border: 2px solid black;
 }
 
 
@@ -59,9 +63,6 @@ nav,aside,footer {
   background-color: teal;
 }
 
-div {
-  border: 2px solid black;
-}
 
 .area:hover {
   border:2px solid red;
@@ -71,31 +72,26 @@ div {
 #infoside {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  
+  grid-template-rows: 1fr 1fr 1fr;
+  border: none;
 }
 
 
-#tinyInfo {
-  /* placeholder info */
-  font-size: 12pt;
-  
-}
+
 
 #headText {
   text-align: center;
-  padding: 2px;
   
   background-image:url('https://wallup.net/wp-content/uploads/2017/11/10/70037-war-World_War_II.jpg');
   background-repeat:no-repeat;
   background-size:cover;
-
+  border: 2px solid black;
 
 }
 
 #mainText {
   text-align: left;
-  padding: 0px 5px 0px 10px;
+  padding: 0px 5px 0px 5px;
 }
 
 #buttons {
@@ -103,14 +99,7 @@ div {
   flex-direction: row;
   justify-content: space-evenly;
   padding: 5px;
+  border: 2px solid black;
 }
 
-/*
-#widgets {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 5px;
-  background-color: lightgreen;
-  font-weight: bold;
-}
-*/
+
