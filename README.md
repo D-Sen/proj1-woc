@@ -10,9 +10,9 @@ A html-5/Javascript based game playable in a browser, that takes the standard â€
 
 
 ## Technologies Used:
-HTML - a basic html file in 'html 5', which lays out the base structure for the visual elements.
-CSS - does the 'heavy-lifting' for the design elements, in the useful CSS structure and helps the HTML file maintain easy readability.
-JAVASCRIPT(JS) - contains the backend code for processing game input and dynamically changing visual HTML items.
+HTML - a basic html file in 'html 5', which lays out the base structure for the visual elements. <br />
+CSS - does the 'heavy-lifting' for the design elements, in the useful CSS structure and helps the HTML file maintain easy readability. <br />
+JAVASCRIPT(JS) - contains the backend code for processing game input and dynamically changing visual HTML items. <br />
 
 ### Requirements: 
 A standard computer screen - not optimized for phone or tablet screens!
