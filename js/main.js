@@ -140,12 +140,12 @@ function mainGameLogic() {
   card1 = getCard(you);
   card2 = getCard(cpu);  
  
-  if (card1 > 9 && card1 < 16) {
+  if (card1 > 9 && card1 < 14) {
     p1realValue = 10;
   } else {
     p1realValue = card1;
   }
-  if (card2 > 9 && card2 < 16) {
+  if (card2 > 9 && card2 < 14) {
     p2realValue = 10;
   } else {
     p2realValue = card2;
@@ -158,18 +158,17 @@ function mainGameLogic() {
       player2war.push(getCard(cpu));
     } 
 
-    console.log(`${player1war} player 1 war`)
     //war can only happen once, so check then redraw card if values match (until they dont)
     do {
       p1wd = getCard(you);
-      p2wd = getCard(cpu);
+      p2wd = getCard(cpu);		
 
-      if (p1wd > 9 && p1wd < 16) {
+      if (p1wd > 9 && p1wd < 14) {
         p1realValue = 10;
       } else {
         p1realValue = p1wd;
       }
-      if (p2wd > 9 && p2wd < 16) {
+      if (p2wd > 9 && p2wd < 14) {
         p2realValue = 10;
       } else {
         p2realValue = p2wd;
@@ -219,8 +218,10 @@ function render(type,evt,areaNumber) {
 
   if (type === 1) {
     //mouse selection text
+    document.getElementById('cardAreaWar').innerText = "";
 	document.getElementById('cardArea').innerText = "";
     document.getElementById('resultArea').innerText = "";
+    
     if (areas[evt.target.id] === 0) {
       document.getElementById('mainText').innerText = textStrings[areaNumber];  
     } else if (areas[evt.target.id] === 1){
@@ -238,12 +239,12 @@ function render(type,evt,areaNumber) {
   } else if (type === 3) {
     //part 1 of battle when "war" occurs
     for(i = 0; i < 3; i++){
-    	player1war[i] = faceCardReplace(player1war[i]);
+	  player1war[i] = faceCardReplace(player1war[i]);
       player2war[i] = faceCardReplace(player2war[i]);
     }
-    document.getElementById('cardAreaWar').innerHTML = `<img src="./images/PNG-cards-1.3/${cardFaces[p1wd] + player1CardFace + ".png"}" width="100px" height="100px"> &nbsp;&nbsp;&nbsp;&nbsp; <img src="./images/PNG-cards-1.3/${cardFaces[p2wd] + player2CardFace + ".png"}" width="100px" height="100px"><br>`;
-    document.getElementById('cardArea').innerHTML = `War!<br>${player1war} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;${player2war}<br>`;
-
+    document.getElementById('cardAreaWar').innerHTML = `War!<br>${player1war} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;${player2war}<br>`;
+	document.getElementById('cardArea').innerHTML = `<img src="./images/PNG-cards-1.3/${cardFaces[p1wd] + player1CardFace + ".png"}" width="100px" height="100px"> &nbsp;&nbsp;&nbsp;&nbsp; <img src="./images/PNG-cards-1.3/${cardFaces[p2wd] + player2CardFace + ".png"}" width="100px" height="100px"><br>`;
+    
   
   } else if (type === 4) {
     //part 2 of battle
@@ -277,6 +278,7 @@ function render(type,evt,areaNumber) {
     	allAreas[i].style.border = "none"
     }
     document.getElementById('battle').disabled = true;
+    document.getElementById('cardAreaWar').innerText = "";
     document.getElementById('cardArea').innerText = "";
     document.getElementById('resultArea').innerText = "";
     
@@ -310,8 +312,6 @@ function init(){
   cpu = new Player("cpu");
   
   document.getElementById('mainText').innerHTML = `${textStrings[0]} <br><br>Portland<br>Eugene<br>Medford<br>Bend`;
-  
   document.getElementById('battle').disabled = true;
-  console.log("init finished");
-  
+    
 };

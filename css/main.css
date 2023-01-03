@@ -29,7 +29,7 @@ main {
   background-color: white;
 }
 
-#IF {
+#infoColumn {
   display: grid;
   grid-template-rows: 2fr 3fr 10%;
   border: 2px solid black;
@@ -67,9 +67,9 @@ nav,aside,footer {
 .area:hover {
   border:2px solid red;
             
-  }
+}
 
-#infoside {
+#mapColumn {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -80,8 +80,7 @@ nav,aside,footer {
 
 
 #headText {
-  text-align: center;
-  
+  text-align: center;  
   background-image:url('https://wallup.net/wp-content/uploads/2017/11/10/70037-war-World_War_II.jpg');
   background-repeat:no-repeat;
   background-size:cover;
