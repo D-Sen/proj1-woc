@@ -30,7 +30,7 @@ The battle result is displayed in that same column; if a true 'War' is needed, T
 
 To reset the game and refresh the battled areas, click on the 'NEW CAMPAIGN' button at any time during gameplay.
  
-_Point of Interest: The square red border only appears the first time the page/game is loaded. After restarting the game from the 'New Campaign' button, these square borders will not appear. Originally used for testing, I thought leaving in these initial borders would help a first-time play understand what areas are interactable._
+_Point of Interest: The square red border only appears the first time the page/game is loaded. After restarting the game from the 'New Campaign' button, these square borders will not appear. Originally used for testing, I thought leaving in these initial borders would help a first-time player understand what areas are interactable._
 
 
 ## Next Steps/Icebox:

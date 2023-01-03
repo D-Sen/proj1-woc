@@ -16,6 +16,9 @@ cardFaces = [null,null,"2_of_","3_of_","4_of_","5_of_","6_of_",
 /*----- app's state (variables) -----*/
   let winner = null; // 1 - player, 2 - cpu
 
+  let card1 = null;
+  let card2 = null;
+
   //3 card war chest per player
   let player1war = [];
   let player2war = [];
@@ -28,9 +31,6 @@ cardFaces = [null,null,"2_of_","3_of_","4_of_","5_of_","6_of_",
   let p1realValue = null;
   let p2realValue = null;
     
-  let card1 = null;
-  let card2 = null;
-
   let player1CardFace = "spades";
   let player2CardFace = "hearts";
   
@@ -53,8 +53,6 @@ class Player {
   }
 }
 
-// 0 - not yet started, 1 awaiting area selection, 2 area selected, 3 battling
-const gameState = null;
 
 /*----- cached element references -----*/
 let currentArea = null;
@@ -126,15 +124,15 @@ function mainGameLogic() {
 
   tempCardFace = getRandInt(0,4);
   if (tempCardFace === 0) { player1CardFace = "spades";
-  } else if (tempCardFace === 0) { player1CardFace = "hearts";
-  } else if (tempCardFace === 0) { player1CardFace = "diamonds";
-  } else { player1CardFace = "clubs";
+  } else if (tempCardFace === 1) { player1CardFace = "hearts";
+  } else if (tempCardFace === 2) { player1CardFace = "diamonds";
+  } else if (tempCardFace === 3) { player1CardFace = "clubs";
   }
   tempCardFace = getRandInt(0,4);
   if (tempCardFace === 0) { player2CardFace = "spades";
-  } else if (tempCardFace === 0) { player2CardFace = "hearts";
-  } else if (tempCardFace === 0) { player2CardFace = "diamonds";
-  } else { player2CardFace = "clubs";
+  } else if (tempCardFace === 1) { player2CardFace = "hearts";
+  } else if (tempCardFace === 2) { player2CardFace = "diamonds";
+  } else if (tempCardFace === 3) { player2CardFace = "clubs";
   }
 
   card1 = getCard(you);
@@ -174,44 +172,45 @@ function mainGameLogic() {
         p2realValue = p2wd;
       }
     } while (p1realValue === p2realValue);
-      //you win
-
-      if (p1realValue > p2realValue) {
-        winner = 1; 
-        for(i = 0; i < 3; i++){
-           you.cardStock[player2war[i]]++;
-        }
-        you.cardStock[p2wd]++;
-      }
-      if (p1realValue < p2realValue) {
-        winner = 2;
-        for(i = 0; i < 3; i++){
-           you.cardStock[player1war[i]]--;
-        }
-        you.cardStock[p1wd]--;
-      }
+      
+	//you win
+	if (p1realValue > p2realValue) {
+		winner = 1; 
+		for(i = 0; i < 3; i++){
+		   you.cardStock[player2war[i]]++;
+		}
+		you.cardStock[p2wd]++;
+	}
+	  
+	  //you lose
+	if (p1realValue < p2realValue) {
+		winner = 2;
+		for(i = 0; i < 3; i++){
+			you.cardStock[player1war[i]]--;
+		}
+		you.cardStock[p1wd]--;
+	}
+	  
     render(3,null,null);
     
   } else {
     if (p1realValue > p2realValue) winner = 1;
     if (p1realValue < p2realValue) winner = 2;
-
     render(2,null,null);
   }      
+  
   if (winner > 0) {
     if (winner === 1) {
       render(4,null,null); 
       areas[currentArea] = 1;
       ++you.cardStock[card2];
-      
     } else if (winner === 2) {
       render(4,null,null) ;
       areas[currentArea] = 2;
       --you.cardStock[card1];
-      
-    }        
-    
+    }
   }  
+  
 };
 
 function render(type,evt,areaNumber) {
@@ -259,7 +258,7 @@ function render(type,evt,areaNumber) {
     //handle clicking on area
     let allAreas = document.getElementsByClassName("area");
     for(i = 0; i < allAreas.length; i++){
-    	allAreas[i].style.border = "none"
+    	allAreas[i].style.border = "none";
     }
     evt.target.style.border="2px solid red";
     evt.target.style.borderRadius="50%";
@@ -275,7 +274,7 @@ function render(type,evt,areaNumber) {
     //reset visual elements
     let allAreas = document.getElementsByClassName("area");
     for(i = 0; i < allAreas.length; i++){
-    	allAreas[i].style.border = "none"
+    	allAreas[i].style.border = "none";
     }
     document.getElementById('battle').disabled = true;
     document.getElementById('cardAreaWar').innerText = "";
