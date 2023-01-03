@@ -1,9 +1,9 @@
 # War Over Cascadia
 
-###by: Domonic Senesi
-###for SEI1212
+### by: Domonic Senesi
+### for SEI1212
 
-![Screenshot](TargetUrl)
+![Screenshot](https://github.com/D-Sen/proj1-woc/blob/main/screenshot.png)
 
 A html-5/Javascript based game playable in a browser, that takes the standard ‘War’ card game and makes it take place on a map of a real geographical location. This as conceived as the base game is somewhat easy to implement, and the real design comes from the visual and tactile pieces of the interface. I thought this would be a good combination to show my coding skill and also my flair for creativity and design.
 
