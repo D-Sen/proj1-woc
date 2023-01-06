@@ -22,7 +22,7 @@ Web Browser up to date to 2020 standards and all page script elements allowed. <
 ## Getting Started:
 
 Direct link to the game - 
-[https://github.com/D-Sen/proj1-WoC](https://github.com/D-Sen/proj1-WoC)
+[https://d-sen.github.io/proj1-woc/](https://d-sen.github.io/proj1-woc/)
 
 To play the game, load the provided URL into a browser window. Once loaded the player is instructed to pick a location on the map by hovering the mouse pointer over  several pre-chosen areas. The available areas are listed in the left side 'instructional' column of the screen in the beginning of the game. When the player hovers the mouse pointer over any of these areas, a red border will appear to show what areas are selectable. Left clicking one of these 'areas' will encircle the area in red and provide a description of the area in the left informational column, and the "BATTLE" button will become clickable. At this point, click on "BATTLE" to execute the 'War' card game. This process is automated behind the scenes and the result will be displayed. Just like true 'War', card loss or gain is cumlative. The players' card appears on the left, and the foes' on the right.
 
