@@ -5,7 +5,7 @@
 
 body {
   display: grid;
-  grid-template-columns:  10px 1fr 10px;
+  grid-template-columns: 10px 1fr 10px;
   grid-template-rows: 10px 1fr 10px;
   margin: 0;
   height: 100vh;
@@ -18,7 +18,7 @@ h1 {
 
 p {
   font-size: 16pt;
-  margin:5px;
+  margin: 5px;
 }
 
 
@@ -39,16 +39,15 @@ main {
   text-align: center;
   display: flex;
   justify-content: space-evenly;
-  
 }
 
 #mainMap{
   display: grid;
   grid-template-columns: 25% 15% 12% 1fr;
   grid-template-rows: 1fr;
-  background-image:url("../images/oregontes.png");
-  background-repeat:no-repeat;
-  background-size:cover;
+  background-image: url("../images/oregontes.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   border: 2px solid black;
 }
 
@@ -65,26 +64,24 @@ nav,aside,footer {
 
 
 .area:hover {
-  border:2px solid red;
+  border: 2px solid red;
 }
 
 #mapColumn {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; 
   grid-template-rows: 1fr 1fr 1fr;
   border: none;
 }
 
 
 
-
 #headText {
   text-align: center;  
-  background-image:url('https://wallup.net/wp-content/uploads/2017/11/10/70037-war-World_War_II.jpg');
-  background-repeat:no-repeat;
-  background-size:cover;
+  background-image: url('https://wallup.net/wp-content/uploads/2017/11/10/70037-war-World_War_II.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   border: 2px solid black;
-
 }
 
 #mainText {
