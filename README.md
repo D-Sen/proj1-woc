@@ -3,7 +3,7 @@
 ### by: Domonic Senesi
 ### for SEI1212
 
-![Screenshot](https://github.com/D-Sen/proj1-woc/blob/main/screenshot.png)
+![Screenshot](https://github.com/D-Sen/proj1-woc/blob/main/images/screenshot.png)
 
 A html-5/Javascript based game playable in a browser, that takes the standard ‘War’ card game and has it take place on a map of a real geographical location. As the base game 'War' is somewhat easy to implement, and the real design comes from the visual and tactile pieces of the interface. I thought this would be a good combination to show my coding skill and also my flair for creativity and design.
 
@@ -17,7 +17,7 @@ JAVASCRIPT(JS) - contains the backend code for processing game input and dynamic
 ### Requirements: 
 A standard computer screen - not optimized for phone or tablet screens! <br />
 Web Browser up to date to 2020 standards and all page script elements allowed. <br />
-
+The map~area selection will not function correctly when the map size is less than 650 pixels.
 
 ## Getting Started:
 
@@ -34,11 +34,9 @@ _Point of Interest: The square red border only appears the first time the page/g
 
 
 ## Next Steps/Icebox:
-* Make the visual design flexible for every possible screen size. 
-* Display the original 'War' card when a true 'War' is initiated.
-* Add in a brief animation when the engine is selecting the cards when a battle is initiated.
+* Add in a brief animation when the engine is selecting the cards after a battle is initiated.
 * Brand each location with a different suit, and make visual/gameplay changes accordingly.
-* Provide a message after all four of the locations have been fought in relating to the overall success or defeat of the campaign.
+* Provide a message after all four of the locations have been fought in relating to the overall success or defeat in the campaign.
 
 ***
 

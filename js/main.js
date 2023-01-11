@@ -5,7 +5,7 @@ const textStrings = [
   "Attacking their forces in the heart of the land, this will turn the tide of the war in our favor.",
   "We'll drive those filthy curs from the southern valley and proclaim victory over the main trading route.",
   "Exile the enemy's main contingent from this central battlefield, and send them fleeing into the outer regions.",
-  "We were victorious in routing our enemy from this sacred land, god shines down upon us on this glorious day!",
+  "This area has been claimed for us, we cannot rest on laurels and must seek other areas to conquer.",
   "We failed on this day but we will not fail again. Though this battle is lost, we must continue to fight."  
   ];
 
@@ -210,6 +210,7 @@ function mainGameLogic() {
       --you.cardStock[card1];
     }
   }  
+
   
 };
 
@@ -241,7 +242,7 @@ function render(type,evt,areaNumber) {
 	  player1war[i] = faceCardReplace(player1war[i]);
       player2war[i] = faceCardReplace(player2war[i]);
     }
-    document.getElementById('cardAreaWar').innerHTML = `War!<br>${player1war} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;${player2war}<br>`;
+    document.getElementById('cardAreaWar').innerHTML = `  !War!  <br>${player1war} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;${player2war}<br>`;
 	document.getElementById('cardArea').innerHTML = `<img src="./images/PNG-cards-1.3/${cardFaces[p1wd] + player1CardFace + ".png"}" width="100px" height="100px"> &nbsp;&nbsp;&nbsp;&nbsp; <img src="./images/PNG-cards-1.3/${cardFaces[p2wd] + player2CardFace + ".png"}" width="100px" height="100px"><br>`;
     
   
@@ -253,7 +254,9 @@ function render(type,evt,areaNumber) {
     } else if (winner === 2) {  
       document.getElementById('resultArea').innerHTML = `DEFEAT!`;    
     }
-    
+   
+   
+
   } else if (type === 5) {
     //handle clicking on area
     let allAreas = document.getElementsByClassName("area");
